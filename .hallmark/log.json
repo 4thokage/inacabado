@@ -1,0 +1,13 @@
+[
+	{
+		"date": "2026-08-10",
+		"macrostructure": "Marquee Hero",
+		"theme": "custom · paper-ink bookshelf (paper oklch(0.971 0.006 85) · ink oklch(0.26 0.02 55) · oxblood oklch(0.47 0.11 42) · Fraunces Variable + Instrument Sans Variable)",
+		"axes": { "paper-band": "light", "display-style": "high-contrast-serif", "accent-hue": "warm" },
+		"enrichment": "none (typography only; book covers são o conteúdo)",
+		"nav": "N6 masthead",
+		"footer": "Ft1 mast-headed",
+		"motion": "quieto; física Jelly preservada por decisão do utilizador",
+		"brief": "Entrelinhas · fila de leitura pessoal (PT-PT) · SvelteKit + Tailwind v4 + Jelly UI"
+	}
+]

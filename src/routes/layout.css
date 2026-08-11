@@ -1,0 +1,463 @@
+/* ============================================================================
+   Entrelinhas · layout.css
+   Hallmark · genre: editorial · macrostructure: Marquee Hero · theme: custom
+   paper-ink bookshelf (warm paper · warm ink · oxblood) · enrichment: none
+   (typography only) · nav: N6 masthead · footer: Ft1 mast-headed
+   ----------------------------------------------------------------------------
+   Audience: leitor voraz com livros a mais. Use case: decidir o que ler a
+   seguir e manter o rasto da pilha. Tone: editorial, literário, táctil.
+   Motion: quieto (tokens Jelly mantêm a sua física própria; nada suprimido).
+   ========================================================================== */
+
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Tokens de marca (Tailwind v4)
+   ------------------------------------------------------------------------- */
+@theme {
+	--color-paper: oklch(0.971 0.006 85);
+	--color-paper-elevated: oklch(0.985 0.004 85);
+	--color-paper-shade: oklch(0.955 0.007 85);
+	--color-paper-neutral: oklch(0.938 0.008 85);
+
+	--color-ink: oklch(0.26 0.02 55);
+	--color-ink-muted: oklch(0.5 0.02 55);
+	--color-ink-faint: oklch(0.62 0.02 55);
+
+	--color-hairline: oklch(0.87 0.011 58);
+	--color-hairline-strong: oklch(0.76 0.018 58);
+
+	--color-accent: oklch(0.47 0.11 42);
+	--color-accent-ink: oklch(0.985 0.004 85);
+	--color-accent-soft: oklch(0.911 0.018 80);
+	--color-focus: oklch(0.47 0.11 42);
+
+	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+	--font-ui: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+@layer base {
+	html {
+		color-scheme: light;
+		overflow-x: clip;
+		background: var(--color-paper);
+	}
+
+	body {
+		overflow-x: clip;
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-ui);
+		font-size: 16px;
+		line-height: 1.6;
+		font-weight: 430;
+		font-synthesis: none;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		min-height: 100dvh;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-display);
+		font-weight: 620;
+		letter-spacing: -0.02em;
+		line-height: 1.08;
+		overflow-wrap: anywhere;
+		min-width: 0;
+		font-style: normal;
+	}
+
+	p {
+		max-width: 65ch;
+	}
+
+	a {
+		color: inherit;
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+		text-decoration-color: color-mix(in oklab, var(--color-accent) 40%, transparent);
+		transition: text-decoration-color var(--dur-short) var(--ease-out);
+	}
+
+	@media (hover: hover) {
+		a:hover {
+			text-decoration-color: var(--color-accent);
+		}
+	}
+
+	::selection {
+		background: color-mix(in oklab, var(--color-accent) 20%, transparent);
+		color: var(--color-ink);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-focus);
+		outline-offset: 3px;
+	}
+
+	button {
+		touch-action: manipulation;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Ritmo editorial (transform + opacity apenas; transições tokenizadas)
+   ------------------------------------------------------------------------- */
+:root {
+	--dur-micro: 120ms;
+	--dur-short: 220ms;
+	--dur-long: 420ms;
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Sobreposição Jelly (não-layerizada: vence o @layer jelly dos tokens)
+   O bundle injeta os tokens em `@layer jelly`; CSS não-layerizado tem sempre
+   precedência. Sem <jelly-theme>: a paleta editorial é fixa em :root.
+   ------------------------------------------------------------------------- */
+:root {
+	/* Tipografia */
+	--jelly-font-display: var(--font-display);
+	--jelly-font-text: var(--font-ui);
+	--jelly-font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+	/* Anel de foco */
+	--jelly-ring-width: 2px;
+	--jelly-ring-gap: 3px;
+
+	/* Superfícies */
+	--jelly-color-background-surface: oklch(0.985 0.004 85);
+	--jelly-color-background-muted: oklch(0.955 0.007 85);
+	--jelly-color-background-neutral: oklch(0.938 0.008 85);
+	--jelly-color-background-neutral-emphasis: oklch(0.26 0.02 55);
+	--jelly-color-background-white: oklch(0.995 0.002 85);
+	--jelly-color-background-accent: oklch(0.47 0.11 42);
+	--jelly-color-background-rose: oklch(0.56 0.09 25);
+	--jelly-color-background-amber: oklch(0.74 0.1 72);
+	--jelly-color-background-azure: oklch(0.62 0.07 235);
+	--jelly-color-background-mint: oklch(0.72 0.08 150);
+
+	/* Texto */
+	--jelly-color-foreground-default: oklch(0.26 0.02 55);
+	--jelly-color-foreground-muted: oklch(0.5 0.02 55);
+	--jelly-color-foreground-on-accent: oklch(0.985 0.004 85);
+	--jelly-color-foreground-on-emphasis: oklch(0.985 0.004 85);
+	--jelly-color-foreground-on-neutral: oklch(0.26 0.02 55);
+	--jelly-color-foreground-on-white: oklch(0.26 0.02 55);
+
+	/* Contornos */
+	--jelly-color-border-default: oklch(0.87 0.011 58);
+	--jelly-color-border-strong: oklch(0.76 0.018 58);
+	--jelly-color-border-focus: oklch(0.47 0.11 42);
+
+	/* Sombras (rgb para rgba(var(--jelly-color-shadow), a)) */
+	--jelly-color-shadow: 74 59 49;
+}
+
+/* Raios e densidade por componente (especificidade :root jelly-x > :host) */
+:root jelly-button {
+	--jelly-button-radius: 12px;
+}
+:root jelly-button[size='small'],
+:root jelly-button[size='sm'] {
+	--jelly-button-radius: 10px;
+}
+:root jelly-button[size='large'],
+:root jelly-button[size='lg'] {
+	--jelly-button-radius: 14px;
+}
+:root jelly-icon-button {
+	--jelly-icon-button-radius: 10px;
+}
+:root jelly-input {
+	--jelly-input-radius: 8px;
+	--jelly-input-font-size: 15px;
+}
+:root jelly-progress {
+	--jelly-progress-radius: 999px;
+}
+:root jelly-slider {
+	inline-size: 100%;
+}
+:root jelly-segmented {
+	--jelly-segmented-radius: 12px;
+}
+:root jelly-chip {
+	--jelly-chip-radius: 8px;
+}
+:root jelly-alert {
+	--jelly-alert-radius: 12px;
+	--jelly-alert-font-size: 13.5px;
+}
+:root jelly-badge {
+	--jelly-badge-radius: 999px;
+}
+:root jelly-toaster {
+	--jelly-toast-radius: 10px;
+}
+:root jelly-dialog {
+	--jelly-dialog-radius: 16px;
+	--jelly-dialog-padding: 28px;
+}
+
+/* ---------------------------------------------------------------------------
+   Peças editoriais partilhadas
+   ------------------------------------------------------------------------- */
+
+/* Dupla regra de jornal */
+.rule-double {
+	block-size: 4px;
+	border-block: 1px solid var(--color-hairline);
+	box-sizing: border-box;
+	background: var(--color-paper);
+}
+
+.rule-single {
+	block-size: 1px;
+	background: var(--color-hairline);
+}
+
+/* Divisor com florão */
+.fleurons {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	color: var(--color-accent);
+	user-select: none;
+}
+.fleurons::before,
+.fleurons::after {
+	content: '';
+	block-size: 1px;
+	flex: 1;
+	background: var(--color-hairline);
+}
+
+/* Capa tipográfica de recurso (sem imagem) */
+.cover-ph {
+	position: relative;
+	aspect-ratio: 2 / 3;
+	background: var(--color-paper-shade);
+	border: 1px solid var(--color-hairline);
+	display: grid;
+	place-items: center;
+	text-align: center;
+	padding: clamp(0.75rem, 9%, 1.5rem);
+	font-family: var(--font-display);
+	font-weight: 620;
+	letter-spacing: -0.01em;
+	line-height: 1.15;
+	color: var(--color-ink);
+	overflow: hidden;
+	overflow-wrap: anywhere;
+}
+.cover-ph::after {
+	content: '❦';
+	position: absolute;
+	inset-block-start: 0.5rem;
+	inset-inline-end: 0.55rem;
+	font-size: 0.95rem;
+	line-height: 1;
+	color: var(--color-accent-soft);
+}
+
+/* Entrada orquestrada (uma só, abaixo da dobra) */
+@media (prefers-reduced-motion: no-preference) {
+	.sweep {
+		opacity: 0;
+		transform: translateX(24px);
+		transition:
+			opacity var(--dur-long) var(--ease-out),
+			transform var(--dur-long) var(--ease-out);
+		transition-delay: calc(var(--i, 0) * 60ms);
+	}
+	.sweep.in-view {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Etiqueta pequena com capitais espaçadas (só para o cabeçalho) */
+.issue-line {
+	font-family: var(--font-display);
+	font-variant: small-caps;
+	letter-spacing: 0.08em;
+	text-transform: lowercase;
+	font-size: 0.78rem;
+	color: var(--color-ink-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Envolvente · masthead N6 + rodapé Ft1
+   ------------------------------------------------------------------------- */
+.shell {
+	min-height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.skip-link {
+	position: fixed;
+	inset-block-start: 0.5rem;
+	inset-inline-start: 0.5rem;
+	z-index: 100;
+	background: var(--color-paper-elevated);
+	color: var(--color-ink);
+	border: 1px solid var(--color-hairline-strong);
+	padding: 0.5rem 0.9rem;
+	font-size: 0.85rem;
+	text-decoration: none;
+	transform: translateY(-200%);
+	transition: transform var(--dur-short) var(--ease-out);
+}
+.skip-link:focus {
+	transform: none;
+}
+
+.masthead {
+	inline-size: min(100% - 2rem, 66rem);
+	margin-inline: auto;
+	padding-block-start: clamp(1.25rem, 3vw, 2.25rem);
+	display: grid;
+	gap: 0.85rem;
+}
+
+.issue-line {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 0.6rem;
+	align-items: baseline;
+	justify-content: center;
+}
+.issue-line .sep {
+	color: var(--color-accent);
+}
+
+.wordmark {
+	justify-self: center;
+	font-family: var(--font-display);
+	font-weight: 560;
+	font-size: clamp(2rem, 6.5vw, 3.25rem);
+	line-height: 1.05;
+	letter-spacing: -0.03em;
+	color: var(--color-ink);
+	text-decoration: none;
+	text-decoration-color: transparent;
+	text-transform: none;
+}
+.wordmark::first-letter {
+	color: var(--color-accent);
+}
+@media (hover: hover) {
+	.wordmark:hover {
+		text-decoration-color: transparent;
+		color: var(--color-ink);
+	}
+}
+
+.mastnav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.1rem clamp(0.6rem, 2.5vw, 1.5rem);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.navlink {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.4rem;
+	font-family: var(--font-display);
+	font-variant: small-caps;
+	letter-spacing: 0.07em;
+	text-transform: lowercase;
+	font-size: 0.92rem;
+	color: var(--color-ink-muted);
+	text-decoration: none;
+	text-decoration-color: transparent;
+	padding-block: 0.3rem;
+	border-block-end: 1px solid transparent;
+	transition:
+		color var(--dur-short) var(--ease-out),
+		border-color var(--dur-short) var(--ease-out);
+}
+.navlink .navcount {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 1.4rem;
+	block-size: 1.2rem;
+	padding-inline: 0.4rem;
+	font-family: var(--font-ui);
+	font-variant: tabular-nums;
+	font-size: 0.72rem;
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+.navlink.active {
+	color: var(--color-accent);
+	border-block-end-color: var(--color-accent);
+}
+@media (hover: hover) {
+	.navlink:hover {
+		color: var(--color-ink);
+	}
+}
+
+.mastrule {
+	margin-block-start: 0.4rem;
+}
+
+.main {
+	inline-size: min(100% - 2rem, 66rem);
+	margin-inline: auto;
+	padding-block: clamp(2rem, 6vw, 3.5rem) clamp(3rem, 8vw, 5rem);
+}
+
+.footer {
+	inline-size: min(100% - 2rem, 66rem);
+	margin-inline: auto;
+	padding-block-end: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.footerrule {
+	margin-block-end: 1.25rem;
+}
+
+.footer-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem 1.25rem;
+}
+
+.wordmark-sm {
+	font-family: var(--font-display);
+	font-weight: 560;
+	font-size: 1.4rem;
+	letter-spacing: -0.02em;
+	line-height: 1;
+}
+
+.tagline {
+	color: var(--color-ink-muted);
+	font-size: 0.95rem;
+}
+
+.colophon {
+	margin-block-start: 1rem;
+	font-size: 0.8rem;
+	color: var(--color-ink-faint);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 1rem;
+	justify-content: space-between;
+}
