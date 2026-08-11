@@ -32,7 +32,7 @@
   }
 </script>
 
-<jelly-theme>
+<jelly-theme mode="light">
   <div class="shell">
     <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 
