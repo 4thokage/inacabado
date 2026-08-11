@@ -32,58 +32,54 @@
   }
 </script>
 
-<jelly-theme mode="light">
-  <div class="shell">
-    <a class="skip-link" href="#main">Saltar para o conteúdo</a>
+<div class="shell">
+  <a class="skip-link" href="#main">Saltar para o conteúdo</a>
 
-    <header class="masthead">
-      <p class="issue-line">
-        <span>Caderno pessoal de leitura</span>
-        <span class="sep" aria-hidden="true">·</span>
-        <span>{library.porLer.length} na pilha</span>
-      </p>
-      <a class="wordmark" href="/">Entrelinhas</a>
-      <nav class="mastnav" aria-label="Navegação principal">
-        <ul>
-          {#each nav as item (item.href)}
-            <li>
-              <a
-                class="navlink"
-                class:active={isActive(item.href)}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                <span>{item.label}</span>
-                {#if item.count && counts[item.href] !== undefined}
-                  <jelly-badge
-                    class="navcount"
-                    variant="graphite"
-                    shape="square">{counts[item.href]}</jelly-badge
-                  >
-                {/if}
-              </a>
-            </li>
-          {/each}
-        </ul>
-      </nav>
-      <div class="rule-double mastrule" aria-hidden="true"></div>
-    </header>
+  <header class="masthead">
+    <p class="issue-line">
+      <span>Caderno pessoal de leitura</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>{library.porLer.length} na pilha</span>
+    </p>
+    <a class="wordmark" href="/">Entrelinhas</a>
+    <nav class="mastnav" aria-label="Navegação principal">
+      <ul>
+        {#each nav as item (item.href)}
+          <li>
+            <a
+              class="navlink"
+              class:active={isActive(item.href)}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              <span>{item.label}</span>
+              {#if item.count && counts[item.href] !== undefined}
+                <jelly-badge class="navcount" variant="graphite" shape="square"
+                  >{counts[item.href]}</jelly-badge
+                >
+              {/if}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </nav>
+    <div class="rule-double mastrule" aria-hidden="true"></div>
+  </header>
 
-    <main id="main" class="main">
-      {@render children()}
-    </main>
+  <main id="main" class="main">
+    {@render children()}
+  </main>
 
-    <footer class="footer">
-      <div class="rule-double footerrule" aria-hidden="true"></div>
-      <div class="footer-row">
-        <span class="wordmark-sm">Entrelinhas</span>
-        <span class="fleurons" aria-hidden="true">❦</span>
-        <span class="tagline">Descobre o que vais ler a seguir.</span>
-      </div>
-      <p class="colophon">
-        <span>Capas via Open Library</span>
-        <span>Dados guardados apenas neste navegador</span>
-      </p>
-    </footer>
-  </div>
-</jelly-theme>
+  <footer class="footer">
+    <div class="rule-double footerrule" aria-hidden="true"></div>
+    <div class="footer-row">
+      <span class="wordmark-sm">Entrelinhas</span>
+      <span class="fleurons" aria-hidden="true">❦</span>
+      <span class="tagline">Descobre o que vais ler a seguir.</span>
+    </div>
+    <p class="colophon">
+      <span>Capas via Open Library</span>
+      <span>Dados guardados apenas neste navegador</span>
+    </p>
+  </footer>
+</div>
