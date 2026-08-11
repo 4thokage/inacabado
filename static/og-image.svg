@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f3ec"/>
+  <rect x="80" y="96" width="1040" height="2" fill="#dcccb9"/>
+  <rect x="80" y="106" width="1040" height="2" fill="#dcccb9"/>
+  <text x="600" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" letter-spacing="8" fill="#a08d7a">CADERNO PESSOAL DE LEITURA</text>
+  <g transform="translate(344,4) scale(8)">
+    <path fill="#a14e2c" d="M32 50 C 22 44, 21 26, 32 16 C 43 26, 42 44, 32 50 Z"/>
+    <path fill="none" stroke="#a14e2c" stroke-width="3" stroke-linecap="round" d="M32 51 v7"/>
+  </g>
+  <text x="600" y="452" text-anchor="middle" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="132" fill="#463b30">Entrelinhas</text>
+  <text x="600" y="512" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="42" fill="#7a6a58">Descobre o que vais ler a seguir.</text>
+  <rect x="80" y="548" width="1040" height="2" fill="#dcccb9"/>
+  <rect x="80" y="558" width="1040" height="2" fill="#dcccb9"/>
+</svg>

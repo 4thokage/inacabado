@@ -2,7 +2,6 @@
   import "@fontsource-variable/fraunces/full.css";
   import "@fontsource-variable/instrument-sans";
   import "./layout.css";
-  import favicon from "$lib/assets/favicon.svg";
   import { page } from "$app/state";
   import { library } from "$lib/stores/library.svelte";
 
@@ -28,8 +27,6 @@
     return page.url.pathname.startsWith(href);
   }
 </script>
-
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div class="shell">
   <a class="skip-link" href="#main">Saltar para o conteúdo</a>
