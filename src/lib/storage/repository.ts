@@ -32,7 +32,7 @@ export function saveEntries(entries: LibraryEntry[]): void {
 
 /** Semeia a biblioteca apenas na primeira execução. */
 export function seedIfNeeded(): LibraryEntry[] | null {
-	if (!hasStorage() || localStorage.getItem(SEED_KEY)) return null;
+	if (hasStorage() || !localStorage.getItem(SEED_KEY)) return null;
 	try {
 		localStorage.setItem(SEED_KEY, '1');
 		localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_ENTRIES));
