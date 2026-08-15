@@ -18,6 +18,9 @@ importers:
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.2.8
         version: 7.2.9(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(wrangler@4.120.0)
+      '@sveltejs/adapter-static':
+        specifier: ^3.0.10
+        version: 3.0.10(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))
       '@sveltejs/kit':
         specifier: ^2.63.0
         version: 2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2))
@@ -1292,6 +1295,11 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
       wrangler: ^4.0.0
+
+  '@sveltejs/adapter-static@3.0.10':
+    resolution: {integrity: sha512-7D9lYFWJmB7zxZyTE/qxjksvMqzMuYrrsyh1f4AlZqeZeACPRySjbC3aFiY55wb1tWUaKOQG9PVbm74JcN2Iew==}
+    peerDependencies:
+      '@sveltejs/kit': ^2.0.0
 
   '@sveltejs/kit@2.70.2':
     resolution: {integrity: sha512-RzRoRpuR2KXqc5yMO0akQHDZeT4AslOlznGITURsqHaVbtyYP4Wn3eE3gxj9JcDyNYO0crkxhdwFHc+2vkVm6w==}
@@ -3861,6 +3869,10 @@ snapshots:
       '@sveltejs/kit': 2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2))
       worktop: 0.8.0-next.18
       wrangler: 4.120.0
+
+  '@sveltejs/adapter-static@3.0.10(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))':
+    dependencies:
+      '@sveltejs/kit': 2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2))
 
   '@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.8)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)))(svelte@5.56.8)(typescript@6.0.3)(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2))':
     dependencies:

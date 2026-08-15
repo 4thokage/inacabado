@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
@@ -13,7 +13,7 @@ export default defineConfig({
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) => filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: adapter({ fallback: '404.html' })
 		}),
 		SvelteKitPWA({
 			registerType: 'autoUpdate',
@@ -43,9 +43,10 @@ export default defineConfig({
 				]
 			},
 			workbox: {
-				globDirectory: resolve('.svelte-kit/cloudflare'),
+				globDirectory: resolve('build'),
 				globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-				navigateFallback: '404.html',
+				globIgnores: ['sw.js', 'workbox-*.js', 'manifest.webmanifest'],
+				navigateFallback: '404',
 				cleanupOutdatedCaches: true,
 				runtimeCaching: [
 					{
