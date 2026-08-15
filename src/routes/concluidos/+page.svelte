@@ -47,7 +47,7 @@
 {:else}
   <div class="grid">
     {#each sorted as entry (entry.id)}
-      <BookCard {entry} actions={{ back }} showInterest={false} />
+      <BookCard {entry} actions={{ back }} />
     {/each}
   </div>
 {/if}

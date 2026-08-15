@@ -50,7 +50,6 @@
       <BookCard
         {entry}
         actions={{ back, remove: (e) => (toRemove = e) }}
-        showInterest={false}
       />
     {/each}
   </div>

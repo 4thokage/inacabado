@@ -1,7 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
@@ -18,8 +17,14 @@ export default defineConfig({
 		SvelteKitPWA({
 			registerType: 'autoUpdate',
 			injectRegister: false,
-			adapterFallback: '404.html',
-			includeAssets: ['favicon.svg', 'og-image.png'],
+			kit: {
+				adapterFallback: '404.html',
+				spa: true
+			},
+			devOptions: {
+				enabled: true,
+				navigateFallbackAllowlist: []
+			},
 			manifest: {
 				id: '/',
 				name: 'Entrelinhas',
@@ -43,10 +48,15 @@ export default defineConfig({
 				]
 			},
 			workbox: {
-				globDirectory: resolve('build'),
-				globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-				globIgnores: ['sw.js', 'workbox-*.js', 'manifest.webmanifest'],
-				navigateFallback: '404',
+				globPatterns: ['client/**/*.woff2'],
+				globIgnores: [
+					'sw.js',
+					'workbox-*.js',
+					'client/sw.js',
+					'client/workbox-*.js',
+					'manifest.webmanifest'
+				],
+				navigateFallback: '404.html',
 				cleanupOutdatedCaches: true,
 				runtimeCaching: [
 					{

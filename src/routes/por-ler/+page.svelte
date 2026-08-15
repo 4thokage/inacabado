@@ -39,7 +39,6 @@
       <BookCard
         {entry}
         startflow
-        onInterest={(n) => library.setInterest(entry.id, n)}
       />
     {/each}
   </div>

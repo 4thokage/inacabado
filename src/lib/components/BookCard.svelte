@@ -13,18 +13,12 @@
   let {
     entry,
     actions = {},
-    showInterest = true,
     startflow = false,
-    onInterest = () => {},
   }: {
     entry: LibraryEntry;
     actions?: Actions;
-    showInterest?: boolean;
     startflow?: boolean;
-    onInterest?: (n: number) => void;
   } = $props();
-
-  const stars = [1, 2, 3, 4, 5];
 
   const firstAuthor = $derived(entry.meta.authors[0] ?? null);
   const authorsText = $derived(entry.meta.authors.join(", "));
@@ -69,23 +63,6 @@
         >
       {/if}
     </p>
-
-    <!-- {#if showInterest && entry.status === "por-ler"} -->
-    <!--   <jelly-segmented -->
-    <!--     class="interest" -->
-    <!--     value={entry.interest ? String(entry.interest) : ""} -->
-    <!--     label="Interesse neste livro" -->
-    <!--     size="small" -->
-    <!--     onchange={(e) => { -->
-    <!--       const v = (e.currentTarget as HTMLElement & { value?: string }).value; -->
-    <!--       if (v) onInterest(Number(v)); -->
-    <!--     }} -->
-    <!--   > -->
-    <!--     {#each stars as s (s)} -->
-    <!--       <jelly-segment value={String(s)}>{s}</jelly-segment> -->
-    <!--     {/each} -->
-    <!--   </jelly-segmented> -->
-    <!-- {/if} -->
 
     <div class="bcard-actions">
       {#if entry.status === "por-ler" && startflow}
@@ -147,9 +124,6 @@
     text-transform: lowercase;
     font-size: 0.78rem;
     color: var(--color-ink-faint);
-  }
-  .interest {
-    margin-block-start: 0.7rem;
   }
   .bcard-actions {
     margin-block-start: 0.9rem;
